@@ -1,0 +1,58 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model ProjectMiniShop.Pages.Companies.ViewCompanyModel
+@{
+    Layout = "_Dashboard";
+}
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">View Company</span>
+    </div>
+
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td class="table-light">id</td>
+                    <td class="table-light">Name</td>
+                   
+                    <td class="table-light">operation</td>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var Company in Model.AllCompany)
+                {
+                    <tr>
+                        <td>@Company.Id</td>
+                        <td>@Company.Name</td>
+
+
+                        <td>
+
+
+                            <a asp-page="edit"  asp-route-id="@Company.Id" class="btn btn-success" role="button">
+                                <span class="material-symbols-outlined">
+                                    edit
+                                </span>
+                            </a>
+                            <form asp-page-handler="Delete" method="post" asp-route-id="@Company.Id">
+                                <button type="submit"  class="btn btn-danger " role="button">
+
+                                    delete
+
+                                </button>
+                            </form>
+                          
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

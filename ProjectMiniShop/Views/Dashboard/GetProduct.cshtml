@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Product>
+@{
+  Layout="_Dashboard";  
+}
+<h1>
+    @Model.Count()</h1>
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">Adding Product</span>
+    </div>
+
+    <div>        <table class="table table-striped">            <thead>                <tr>                    <td class="table-light">id</td>                    <td class="table-light">Name</td>                    <td class="table-light">Description</td>                    <td class="table-light">Quantity</td>                    <td class="table-light">price</td>
+                    <td class="table-light">Enable Size</td>                    <td class="table-light">Company Name</td>                    <td class="table-light">operation</td>                </tr>            </thead>            <tbody>                                    @foreach(var Product in Model)
+                    {
+                    <tr>
+                        <td>@Product.Id</td>                        <td>@Product.Name</td>                        <td>@Product.Description</td>                        <td>@Product.Quantity</td>                        <td>@Product.Price</td>                        <td>@Product.EnableSize</td>                        <td>@Product.Company.Name</td>                                                                    <td>
+
+
+                            <a asp-action="EditProduct" asp-route-id="@Product.Id" class="btn btn-success" role="button">                            <span class="material-symbols-outlined">                                edit                            </span>                        </a>
+                            <a asp-action="DeleteProduct" asp-route-id="@Product.Id"  class="btn btn-danger " role="button">                            <span class="material-symbols-outlined">                                delete                            </span>                        </a>                    </td>                </tr>
+                }            </tbody>        </table>    </div>
+</div>
